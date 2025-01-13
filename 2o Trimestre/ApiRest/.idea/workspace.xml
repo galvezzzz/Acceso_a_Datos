@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a2d949b9-a764-40b6-8da1-e72de6efa533" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../InicialesPokemon/app/src/main/res/drawable/acerca_de.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InicialesPokemon/app/src/main/res/drawable/chespin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InicialesPokemon/app/src/main/res/drawable/chimchar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InicialesPokemon/app/src/main/res/drawable/fennekin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InicialesPokemon/app/src/main/res/drawable/froakie.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InicialesPokemon/app/src/main/res/drawable/fuecoco.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InicialesPokemon/app/src/main/res/drawable/grookey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InicialesPokemon/app/src/main/res/drawable/litten.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InicialesPokemon/app/src/main/res/drawable/mudkip.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InicialesPokemon/app/src/main/res/drawable/oshawott.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InicialesPokemon/app/src/main/res/drawable/popplio.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InicialesPokemon/app/src/main/res/drawable/quaxly.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InicialesPokemon/app/src/main/res/drawable/rowlet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InicialesPokemon/app/src/main/res/drawable/scorbunny.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InicialesPokemon/app/src/main/res/drawable/selecciona_un_pokemon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InicialesPokemon/app/src/main/res/drawable/snivy.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InicialesPokemon/app/src/main/res/drawable/sobble.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InicialesPokemon/app/src/main/res/drawable/sobre_nosotros.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InicialesPokemon/app/src/main/res/drawable/sprigatito.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InicialesPokemon/app/src/main/res/drawable/tepig.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InicialesPokemon/app/src/main/res/drawable/torchic.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InicialesPokemon/app/src/main/res/drawable/treecko.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InicialesPokemon/app/src/main/res/drawable/turtwig.png" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
+  <component name="ProjectId" id="2rR710HHAtJnchARj4vynfhzxml" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="ApiRest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="ApiRest" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ApiRestApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="ApiRest" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dam.acdat.apirest.ApiRestApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a2d949b9-a764-40b6-8da1-e72de6efa533" name="Changes" comment="" />
+      <created>1736509817038</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1736509817038</updated>
+      <workItem from="1736509818066" duration="327000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

@@ -11,8 +11,8 @@ import java.util.List;
 @Repository
 public interface IEmpleadoDAO extends CrudRepository<Empleado, Integer> {
 
-    List<Empleado> findByPuesto(String puesto);
-    List<Empleado> findByDepnoGreaterThanEqual(Integer depno);
+    Empleado findByPuestoContains(String puesto);
+    //List<Empleado> findByDepnoGreaterThanEqual(Integer depno);
 
     @Query("select e from Empleado e where e.nombre like %:patron%")
     List<Empleado> findByName(@Param("patron") String patron);

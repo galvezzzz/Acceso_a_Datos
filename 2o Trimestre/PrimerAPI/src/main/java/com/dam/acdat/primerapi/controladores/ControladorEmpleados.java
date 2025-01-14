@@ -9,26 +9,37 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api-res/empleados")
-public class ControladorEmpleados {
+public class
+ControladorEmpleados {
 
     @Autowired
     IEmpleadoDAO empleadoDAO;
 
     @GetMapping
-    public List<Empleado> buscarEmpleados(){
-        return null;
+    public List<Empleado> buscarEmpleados(@RequestParam(name="puesto", required=false) String puesto) {
+        if (puesto == null) {
+            return (List<Empleado>)empleadoDAO.findAll();
+        }else{
+            return (List<Empleado>)empleadoDAO.findByPuestoContains(puesto);
+        }
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Empleado> buscarEmpleadoPorID(@PathVariable(value = "id") Integer id){
-        return null;
+        Optional<Empleado> empleado = empleadoDAO.findById(id);
+        if (empleado.isPresent()) {
+            return ResponseEntity.ok(empleado.get());
+        }else{
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping
     public Empleado guardarEmpleado(@Validated @RequestBody Empleado empleado){
-        return null;
+        return empleadoDAO.save(empleado);
     }
 }

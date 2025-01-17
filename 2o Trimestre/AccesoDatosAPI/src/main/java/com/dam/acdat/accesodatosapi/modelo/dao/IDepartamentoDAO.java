@@ -1,7 +1,7 @@
-package com.dam.acdat.primerapi.modelo.dao;
+package com.dam.acdat.accesodatosapi.modelo.dao;
 
-import com.dam.acdat.primerapi.modelo.entidades.Departamento;
-import com.dam.acdat.primerapi.modelo.entidades.Empleado;
+import com.dam.acdat.accesodatosapi.modelo.entidades.Departamento;
+
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -19,5 +19,5 @@ public interface IDepartamentoDAO extends CrudRepository<Departamento, Integer> 
     // 4
     Departamento findByUbicacionIgnoreCase(String ubicacion);
 
-    List<Departamento> findByUbicacionEqualsOrUbicacionEquals(String firstPlace, String secondPlace);
+    Departamento findByUbicacionEqualsOrUbicacionEquals(String firstPlace, String secondPlace);
 }

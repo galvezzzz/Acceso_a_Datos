@@ -1,13 +1,13 @@
-package com.dam.acdat.primerapi;
+package com.dam.acdat.accesodatosapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PrimerApiApplication {
+public class AccesoDatosApiApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(PrimerApiApplication.class, args);
+        SpringApplication.run(AccesoDatosApiApplication.class, args);
     }
 
 }

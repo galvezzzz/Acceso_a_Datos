@@ -3,9 +3,9 @@ package com.dam.acdat.accesodatosapi.controladores;
 
 import com.dam.acdat.accesodatosapi.modelo.dao.IDepartamentoDAO;
 import com.dam.acdat.accesodatosapi.modelo.dao.IEmpleadoDAO;
+import com.dam.acdat.accesodatosapi.modelo.dto.EmpleadoDTO;
 import com.dam.acdat.accesodatosapi.modelo.entidades.Departamento;
 import com.dam.acdat.accesodatosapi.modelo.entidades.Empleado;
-import org.apache.coyote.Response;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -42,33 +42,39 @@ ControladorEmpleados {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Empleado> actualizarEmpleado(@RequestBody Empleado empleado, @PathVariable(value = "id") int id){
-        if (empleadoDAO.existsById(id)) {
-
+    public ResponseEntity<?> actualizarEmpleado(@RequestBody Empleado nuevoEmpleado, @PathVariable (value = "id") int id){
+        if(empleadoDAO.existsById(id)){
+            empleadoDAO.save(nuevoEmpleado);
+            return ResponseEntity.ok().body("Actualizado");
+        }else{
+            return ResponseEntity.notFound().build();
         }
     }
 
     @GetMapping("dto/{id}")
-    public ResponseEntity<Empleado> buscarEmpleadoDTOById(@PathVariable(value = "id") int id){
+    public ResponseEntity<EmpleadoDTO> buscarEmpleadosDTOById(@PathVariable(value = "id") int id){
         Optional<Empleado> empleado = empleadoDAO.findById(id);
 
+        if(empleado.isPresent()){
 
-        Optional<Departamento> departamento = departamentoDAO.findById(empleado.get().getId().getDepno);
-        ModelMapper mapper = new ModelMapper();
+            Optional<Departamento> departamento = departamentoDAO.findById(empleado.get().getId());
 
-        EmpleadosDTO empleadoDTO = mapper.map(empleado.get(), EmpleadoDTO.class);
-        mapper.map(departamento.get(), empleadoDTO);
-        mapper.map(departamento.get(), empleadoDTO);
- 
-        if (empleado.isPresent()) {
-            return ResponseEntity.ok().body(empleadoDTO);
+            ModelMapper mapper = new ModelMapper();
+            EmpleadoDTO empleadosDTO = mapper.map(empleado.get(), EmpleadoDTO.class);
+            mapper.map(departamento.get(),empleadosDTO);
+
+
+            return ResponseEntity.ok().body(empleadosDTO);
+        }else{
+
+            return ResponseEntity.notFound().build();
         }
-
-        return ResponseEntity.ok().body(empleadoDTO);
     }
 
     @PostMapping
     public Empleado guardarEmpleado(@Validated @RequestBody Empleado empleado){
         return empleadoDAO.save(empleado);
     }
+
+
 }

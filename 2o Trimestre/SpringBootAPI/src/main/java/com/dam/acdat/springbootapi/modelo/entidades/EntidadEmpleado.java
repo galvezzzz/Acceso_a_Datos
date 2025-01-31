@@ -1,10 +1,10 @@
-package org.example.springboot.modelo.entidades;
+package com.dam.acdat.springbootapi.modelo.entidades;
 
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "empleados")
-public class EntidadEmpleados {
+public class EntidadEmpleado {
     @Id
     @Column(name = "empno", nullable = false)
     private Integer id;
@@ -15,9 +15,9 @@ public class EntidadEmpleados {
     @Column(name = "puesto", length = 15)
     private String puesto;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "depno")
-    private EntidadDepartamentos depno;
+    private com.dam.acdat.springbootapi.EntidadDepartamento depno;
 
     public Integer getId() {
         return id;
@@ -43,11 +43,11 @@ public class EntidadEmpleados {
         this.puesto = puesto;
     }
 
-    public EntidadDepartamentos getDepno() {
+    public com.dam.acdat.springbootapi.EntidadDepartamento getDepno() {
         return depno;
     }
 
-    public void setDepno(EntidadDepartamentos depno) {
+    public void setDepno(com.dam.acdat.springbootapi.EntidadDepartamento depno) {
         this.depno = depno;
     }
 

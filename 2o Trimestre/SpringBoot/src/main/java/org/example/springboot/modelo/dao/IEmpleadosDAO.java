@@ -8,11 +8,12 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IEmpleadosDAO extends CrudRepository<EntidadEmpleados, Integer> {
-    EntidadEmpleados findByPuesto(String puesto);
-    EntidadEmpleados findByDepnoGreaterThanEquals(int depno);
 
-    /*
+    EntidadEmpleados findByPuesto(String puesto);
+    //EntidadEmpleados findByDepnoGreaterThanEquals(int depno);
+
+
     @Query("select e from EntidadEmpleados e where e.nombre like %:patron%")
     EntidadEmpleados findByName(@Param("patron") String patron);
-    */
+
 }

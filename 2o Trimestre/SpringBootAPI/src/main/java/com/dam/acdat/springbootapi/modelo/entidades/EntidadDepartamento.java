@@ -1,4 +1,4 @@
-package org.example.springboot.modelo.entidades;
+package com.dam.acdat.springbootapi.modelo.entidades;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -7,7 +7,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "departamentos")
-public class EntidadDepartamentos {
+public class EntidadDepartamento {
     @Id
     @Column(name = "depno", nullable = false)
     private Integer id;

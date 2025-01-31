@@ -1,4 +1,4 @@
 package org.example.springboot.controladores;
 
-public class controladorDepartamentos {
+public class ControladorDepartamentos {
 }

@@ -3,7 +3,7 @@ package com.dam.acdat.accesodatosapi.controladores;
 
 import com.dam.acdat.accesodatosapi.modelo.dao.IDepartamentoDAO;
 import com.dam.acdat.accesodatosapi.modelo.dao.IEmpleadoDAO;
-import com.dam.acdat.accesodatosapi.modelo.dto.EmpleadoDTO;
+//import com.dam.acdat.accesodatosapi.modelo.dto.EmpleadoDTO;
 import com.dam.acdat.accesodatosapi.modelo.entidades.Departamento;
 import com.dam.acdat.accesodatosapi.modelo.entidades.Empleado;
 import org.modelmapper.ModelMapper;
@@ -51,6 +51,7 @@ ControladorEmpleados {
         }
     }
 
+    /*
     @GetMapping("dto/{id}")
     public ResponseEntity<EmpleadoDTO> buscarEmpleadosDTOById(@PathVariable(value = "id") int id){
         Optional<Empleado> empleado = empleadoDAO.findById(id);
@@ -70,6 +71,8 @@ ControladorEmpleados {
             return ResponseEntity.notFound().build();
         }
     }
+
+     */
 
     @PostMapping
     public Empleado guardarEmpleado(@Validated @RequestBody Empleado empleado){

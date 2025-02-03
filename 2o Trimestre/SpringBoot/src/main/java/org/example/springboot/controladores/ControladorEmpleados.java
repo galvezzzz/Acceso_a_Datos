@@ -1,6 +1,10 @@
 package org.example.springboot.controladores;
 
+import org.apache.coyote.Response;
+import org.example.springboot.modelo.dao.IDepartamentosDAO;
 import org.example.springboot.modelo.dao.IEmpleadosDAO;
+import org.example.springboot.modelo.dto.EmpleadosDTO;
+import org.example.springboot.modelo.entidades.EntidadDepartamentos;
 import org.example.springboot.modelo.entidades.EntidadEmpleados;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +20,9 @@ public class ControladorEmpleados {
 
     @Autowired
     IEmpleadosDAO empleadosDAO;
+
+    @Autowired
+    IDepartamentosDAO departamentosDAO;
 
     @GetMapping
     public List<EntidadEmpleados> buscarEmpleados() {
@@ -59,6 +66,28 @@ public class ControladorEmpleados {
             empleado.get().setDepno(nuevoEmpleado.getDepno());
             empleadosDAO.save(empleado.get());
             return ResponseEntity.ok().body("Actualizado");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    // DTO
+    @GetMapping("/dto/{id}")
+    public ResponseEntity<EmpleadosDTO> buscarEmpleadoDTOporId(@PathVariable(value = "id") int id) {
+        Optional<EntidadEmpleados> empleado = empleadosDAO.findById(id);
+
+        if (empleado.isPresent()) {
+            Optional<EntidadDepartamentos> departamento = departamentosDAO.findById(empleado.get().getDepno().getId());
+
+            EmpleadosDTO empleadosDTO = new EmpleadosDTO();
+            empleadosDTO.setNombre(empleado.get().getNombre());
+            empleadosDTO.setPuesto(empleado.get().getPuesto());
+            empleadosDTO.setDepno(departamento.get().getId());
+            empleadosDTO.setEmpno(empleado.get().getId());
+            empleadosDTO.setDepartamentoNombre(departamento.get().getNombre());
+            empleadosDTO.setDepartamentoUbicacion(departamento.get().getUbicacion());
+
+            return ResponseEntity.ok().body(empleadosDTO);
         } else {
             return ResponseEntity.notFound().build();
         }

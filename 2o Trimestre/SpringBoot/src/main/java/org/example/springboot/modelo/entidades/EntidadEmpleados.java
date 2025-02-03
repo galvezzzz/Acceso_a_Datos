@@ -1,6 +1,9 @@
 package org.example.springboot.modelo.entidades;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "empleados")
@@ -9,7 +12,10 @@ public class EntidadEmpleados {
     @Column(name = "empno", nullable = false)
     private Integer id;
 
-    @Column(name = "nombre", length = 10)
+    @Basic
+    @NotEmpty(message = "El nombre no puede estar vacío")
+    @Size(min = 2, max = 10, message = "El nombre debe tener entre 2 y 10 caracteres")
+    @Column(name = "nombre", nullable = true, length = 10)
     private String nombre;
 
     @Column(name = "puesto", length = 15)
@@ -17,6 +23,7 @@ public class EntidadEmpleados {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "depno")
+    @JsonBackReference("empleados")
     private EntidadDepartamentos depno;
 
     public Integer getId() {

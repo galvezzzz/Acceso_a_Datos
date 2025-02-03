@@ -1,10 +1,10 @@
-package com.dam.acdat.springbootapi;
+package org.example;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringBootApiApplicationTests {
+class SpringRestApplicationTests {
 
     @Test
     void contextLoads() {

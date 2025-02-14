@@ -6,6 +6,7 @@ import org.example.springboot.modelo.dao.IEmpleadosDAO;
 import org.example.springboot.modelo.dto.EmpleadosDTO;
 import org.example.springboot.modelo.entidades.EntidadDepartamentos;
 import org.example.springboot.modelo.entidades.EntidadEmpleados;
+import org.example.springboot.modelo.servicio.ServicioEmpleados;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -19,77 +20,38 @@ import java.util.Optional;
 public class ControladorEmpleados {
 
     @Autowired
-    IEmpleadosDAO empleadosDAO;
-
-    @Autowired
-    IDepartamentosDAO departamentosDAO;
+    ServicioEmpleados servicioEmpleados;
 
     @GetMapping
     public List<EntidadEmpleados> buscarEmpleados() {
-        return (List<EntidadEmpleados>) empleadosDAO.findAll();
+        return servicioEmpleados.buscarEmpleados();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<EntidadEmpleados> buscarEmpleadoPorId(@PathVariable(value = "id") int id) {
-        Optional<EntidadEmpleados> empleado = empleadosDAO.findById(id);
+        return servicioEmpleados.buscarEmpleadoPorId(id);
 
-        if (empleado.isPresent()) {
-            return ResponseEntity.ok().body(empleado.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
     }
 
     @PostMapping
     public EntidadEmpleados guardarEmpleado(@Validated @RequestBody EntidadEmpleados empleado) {
-        return empleadosDAO.save(empleado);
+        return servicioEmpleados.guardarEmpleado(empleado);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> borrarEmpleado(@PathVariable(value = "id") int id) {
-        Optional<EntidadEmpleados> empleado = empleadosDAO.findById(id);
-        if (empleado.isPresent()) {
-            empleadosDAO.deleteById(id);
-            return ResponseEntity.ok().body("Borrado");
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return servicioEmpleados.borrarEmpleado(id);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<?> actualizarEmpleado(@RequestBody EntidadEmpleados nuevoEmpleado,
                                                 @PathVariable(value = "id") int id) {
-        Optional<EntidadEmpleados> empleado = empleadosDAO.findById(id);
-        if (empleado.isPresent()) {
-            empleado.get().setNombre(nuevoEmpleado.getNombre());
-            empleado.get().setPuesto(nuevoEmpleado.getPuesto());
-            empleado.get().setDepno(nuevoEmpleado.getDepno());
-            empleadosDAO.save(empleado.get());
-            return ResponseEntity.ok().body("Actualizado");
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return servicioEmpleados.actualizarEmpleado(nuevoEmpleado, id);
     }
 
     // DTO
     @GetMapping("/dto/{id}")
     public ResponseEntity<EmpleadosDTO> buscarEmpleadoDTOporId(@PathVariable(value = "id") int id) {
-        Optional<EntidadEmpleados> empleado = empleadosDAO.findById(id);
-
-        if (empleado.isPresent()) {
-            Optional<EntidadDepartamentos> departamento = departamentosDAO.findById(empleado.get().getDepno().getId());
-
-            EmpleadosDTO empleadosDTO = new EmpleadosDTO();
-            empleadosDTO.setNombre(empleado.get().getNombre());
-            empleadosDTO.setPuesto(empleado.get().getPuesto());
-            empleadosDTO.setDepno(departamento.get().getId());
-            empleadosDTO.setEmpno(empleado.get().getId());
-            empleadosDTO.setDepartamentoNombre(departamento.get().getNombre());
-            empleadosDTO.setDepartamentoUbicacion(departamento.get().getUbicacion());
-
-            return ResponseEntity.ok().body(empleadosDTO);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return servicioEmpleados.buscarEmpleadoDTOporId(id);
     }
 }

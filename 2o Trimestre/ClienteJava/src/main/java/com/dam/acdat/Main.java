@@ -20,13 +20,13 @@ public class Main {
 
         do {
             System.out.println("""
-                MENÚ CRUD
-                1. Hacer GET
-                2. Hacer POST
-                3. Hacer PUT
-                4. Hacer DELETE
-                0. Cerrar programa
-                """);
+                    MENÚ CRUD
+                    1. Hacer GET
+                    2. Hacer POST
+                    3. Hacer PUT
+                    4. Hacer DELETE
+                    0. Cerrar programa
+                    """);
             System.out.print("Introduce una opción: ");
             opcion = sc.next();
 
@@ -34,27 +34,22 @@ public class Main {
                 case "1":
                     GetRequest();
                     break;
-
                 case "2":
                     PostRequest();
                     break;
-
                 case "3":
                     System.out.print("Introduce el ID del empleado/departamento que quieras actualizar: ");
                     id = sc.next();
                     PutRequest(id);
                     break;
-
                 case "4":
                     System.out.print("Introduce el ID del empleado/departamento que quieras borrar: ");
                     id = sc.next();
                     DeleteRequest(id);
                     break;
-
                 case "0":
                     System.out.println("Cerrando el programa");
                     break;
-
                 default:
                     System.out.println("Opcion no valida");
                     break;
@@ -68,7 +63,7 @@ public class Main {
     public static void GetRequest() {
         HttpURLConnection conn = null;
         try {
-            URL url = new URL("http://localhost:8080/" + "api-res/departamentos");
+            URL url = new URL("http://localhost:8080/" + "api-res/empleados");
 
             conn = (HttpURLConnection) url.openConnection();
             conn.setRequestProperty("Accept", "application/json");

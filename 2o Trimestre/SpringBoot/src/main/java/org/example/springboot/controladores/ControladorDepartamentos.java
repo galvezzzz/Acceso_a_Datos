@@ -1,12 +1,10 @@
 package org.example.springboot.controladores;
 
-import org.example.springboot.modelo.dao.IDepartamentosDAO;
-import org.example.springboot.modelo.dao.IEmpleadosDAO;
+
 import org.example.springboot.modelo.entidades.EntidadDepartamentos;
-import org.example.springboot.modelo.entidades.EntidadEmpleados;
+import org.example.springboot.modelo.servicio.ServicioDepartamentos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,30 +15,42 @@ import java.util.Optional;
 public class ControladorDepartamentos {
 
     @Autowired
-    IDepartamentosDAO departamentosDAO;
+    ServicioDepartamentos servicioDepartamentos;
 
     @GetMapping
     public List<EntidadDepartamentos> buscarDepartamentos() {
-
-        return (List<EntidadDepartamentos>) departamentosDAO.findAll();
+        return servicioDepartamentos.buscarDepartamentos();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity <EntidadDepartamentos> buscarDepartamentosPorId(@PathVariable(value="id") int id) {
-
-        Optional<EntidadDepartamentos> departamento = departamentosDAO.findById(id);
-
-        if(departamento.isPresent()){
-            return ResponseEntity.ok(departamento.get());
-
-        }else{
-            return ResponseEntity.notFound().build();
-        }
+    public Optional<EntidadDepartamentos> buscarDepartamentoPorId(@PathVariable int id) {
+        return servicioDepartamentos.buscarDepartamentoPorId(id);
     }
 
     @PostMapping
-    public EntidadDepartamentos guardarDepartamentos(@RequestBody EntidadDepartamentos entidad) {
+    public ResponseEntity<?> guardarDepartamentos(@RequestBody EntidadDepartamentos entidadDepartamentos) {
+        if (servicioDepartamentos.guardarDepartamento(entidadDepartamentos)) {
+            return ResponseEntity.ok().body("Se ha guardado el departamento");
+        }else{
+            return ResponseEntity.badRequest().build();
+        }
+    }
 
-        return departamentosDAO.save(entidad);
+    @PutMapping
+    public ResponseEntity<?> actualizarDepartamentos(EntidadDepartamentos entidadDepartamentos) {
+        if (servicioDepartamentos.actualizarDepartamento(entidadDepartamentos)) {
+            return ResponseEntity.ok().body("Se ha actualizado el departamento");
+        }else {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @DeleteMapping
+    public ResponseEntity<?> eliminarDepartamentos(EntidadDepartamentos entidadDepartamentos) {
+        if (servicioDepartamentos.eliminarDepartamento(entidadDepartamentos)) {
+            return ResponseEntity.ok().body("Se ha eliminado el departamento");
+        }else{
+            return ResponseEntity.badRequest().build();
+        }
     }
 }

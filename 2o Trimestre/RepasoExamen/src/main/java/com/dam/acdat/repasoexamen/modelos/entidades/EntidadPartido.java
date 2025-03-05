@@ -1,5 +1,7 @@
 package com.dam.acdat.repasoexamen.modelos.entidades;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -15,12 +17,14 @@ public class EntidadPartido {
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("equipo_local_id")
     @JoinColumn(name = "equipo_local_id")
-    private EntidadEquipo equipoLocal;
+    private com.dam.acdat.repasoexamen.modelos.entidades.EntidadEquipo equipoLocal;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("equipo_visitante_id")
     @JoinColumn(name = "equipo_visitante_id")
-    private EntidadEquipo equipoVisitante;
+    private com.dam.acdat.repasoexamen.modelos.entidades.EntidadEquipo equipoVisitante;
 
     @Column(name = "fecha")
     private LocalDate fecha;
@@ -42,19 +46,19 @@ public class EntidadPartido {
         this.id = id;
     }
 
-    public EntidadEquipo getEquipoLocal() {
+    public com.dam.acdat.repasoexamen.modelos.entidades.EntidadEquipo getEquipoLocal() {
         return equipoLocal;
     }
 
-    public void setEquipoLocal(EntidadEquipo equipoLocal) {
+    public void setEquipoLocal(com.dam.acdat.repasoexamen.modelos.entidades.EntidadEquipo equipoLocal) {
         this.equipoLocal = equipoLocal;
     }
 
-    public EntidadEquipo getEquipoVisitante() {
+    public com.dam.acdat.repasoexamen.modelos.entidades.EntidadEquipo getEquipoVisitante() {
         return equipoVisitante;
     }
 
-    public void setEquipoVisitante(EntidadEquipo equipoVisitante) {
+    public void setEquipoVisitante(com.dam.acdat.repasoexamen.modelos.entidades.EntidadEquipo equipoVisitante) {
         this.equipoVisitante = equipoVisitante;
     }
 

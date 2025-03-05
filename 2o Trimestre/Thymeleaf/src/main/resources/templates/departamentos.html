@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" href="../static/styles.css" />
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>Número de departamento</th>
+        <th>Nombre</th>
+        <th>Ubicación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="departamento : ${departamentos}">
+        <td th:text="${departamento.id}">
+        <td th:text="${departamento.nombre}">
+        <td th:text="${departamento.ubicacion}">
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

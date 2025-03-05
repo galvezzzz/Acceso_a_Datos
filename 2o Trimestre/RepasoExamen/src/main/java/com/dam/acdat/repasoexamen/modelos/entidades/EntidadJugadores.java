@@ -1,5 +1,6 @@
 package com.dam.acdat.repasoexamen.modelos.entidades;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -21,8 +22,9 @@ public class EntidadJugadores {
     private Integer dorsal;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference("equipo")
     @JoinColumn(name = "equipo_id")
-    private EntidadEquipo equipo;
+    private com.dam.acdat.repasoexamen.modelos.entidades.EntidadEquipo equipo;
 
     public Integer getId() {
         return id;
@@ -56,11 +58,11 @@ public class EntidadJugadores {
         this.dorsal = dorsal;
     }
 
-    public EntidadEquipo getEquipo() {
+    public com.dam.acdat.repasoexamen.modelos.entidades.EntidadEquipo getEquipo() {
         return equipo;
     }
 
-    public void setEquipo(EntidadEquipo equipo) {
+    public void setEquipo(com.dam.acdat.repasoexamen.modelos.entidades.EntidadEquipo equipo) {
         this.equipo = equipo;
     }
 

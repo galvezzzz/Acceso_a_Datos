@@ -1,9 +1,8 @@
-package com.dam.acdat.repasoexamen.modelos.entidades;
+package org.example.repasothymeleaf.modelo.entidades;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -17,22 +16,22 @@ public class EntidadEquipo {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @Size(max = 15)
+    @NotNull
     @Column(name = "nombre", nullable = false, length = 15)
     private String nombre;
 
+    @Size(max = 255)
     @Column(name = "escudo")
     private String escudo;
 
     @OneToMany(mappedBy = "equipo")
-    @JsonBackReference("jugadores")
     private Set<EntidadJugadores> jugadores = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "equipoLocal")
-    @JsonBackReference("partidos_local")
     private Set<EntidadPartido> partidos_local = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "equipoVisitante")
-    @JsonBackReference("partidos_visitante")
     private Set<EntidadPartido> partidos_visitante = new LinkedHashSet<>();
 
     public Integer getId() {

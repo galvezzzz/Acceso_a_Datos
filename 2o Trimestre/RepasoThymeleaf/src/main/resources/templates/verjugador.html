@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Equipos</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="container">
+    <table>
+        <thead>
+        <tr>
+            <th>ID Jugador</th>
+            <th>Nombre</th>
+            <th>Posición</th>
+            <th>Dorsal</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="${jugador.id}"></td>
+            <td th:text="${jugador.nombre}"></td>
+            <td th:text="${jugador.posicion}"></td>
+            <td th:text="${jugador.dorsal}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="button-container">
+        <a href="/verjugadores" class="button">Volver</a>
+    </div>
+</div>
+</body>
+</html>

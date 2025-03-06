@@ -22,4 +22,8 @@ public class ServicioJugadores {
         EntidadEquipo equipo = equipoDAO.findByNombre(stringEquipo);
         return equipo.getJugadores();
     }
+
+    public EntidadJugadores crearJugadorValidado(EntidadJugadores entidadJugadores) {
+        return jugadoresDAO.save(entidadJugadores);
+    }
 }

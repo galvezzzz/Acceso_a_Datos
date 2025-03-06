@@ -1,11 +1,7 @@
-package com.dam.acdat.repasoexamen.modelos.entidades;
+package org.example.repasothymeleaf.modelo.entidades;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -17,23 +13,21 @@ public class EntidadJugadores {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @NotEmpty
-    @Size(min = 5, max = 25, message = "Longitud")
+    @Size(max = 25)
+    @NotNull
     @Column(name = "nombre", nullable = false, length = 25)
     private String nombre;
 
+    @Size(max = 90)
     @Column(name = "posicion", length = 90)
     private String posicion;
 
-    @Min(value = 1, message = "Bomboclat")
-    @Max(value = 30, message = "Bomboclat")
     @Column(name = "dorsal")
     private Integer dorsal;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JsonBackReference("equipo")
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "equipo_id")
-    private com.dam.acdat.repasoexamen.modelos.entidades.EntidadEquipo equipo;
+    private EntidadEquipo equipo;
 
     public Integer getId() {
         return id;
@@ -67,11 +61,11 @@ public class EntidadJugadores {
         this.dorsal = dorsal;
     }
 
-    public com.dam.acdat.repasoexamen.modelos.entidades.EntidadEquipo getEquipo() {
+    public EntidadEquipo getEquipo() {
         return equipo;
     }
 
-    public void setEquipo(com.dam.acdat.repasoexamen.modelos.entidades.EntidadEquipo equipo) {
+    public void setEquipo(EntidadEquipo equipo) {
         this.equipo = equipo;
     }
 

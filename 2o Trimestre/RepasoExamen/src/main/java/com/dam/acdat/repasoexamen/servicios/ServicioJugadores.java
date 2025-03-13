@@ -15,13 +15,13 @@ public class ServicioJugadores {
     @Autowired
     IJugadoresDAO jugadoresDAO;
 
-    @Autowired
-    IEquipoDAO equipoDAO;
+        @Autowired
+        IEquipoDAO equipoDAO;
 
-    public Set<EntidadJugadores> buscarJugadoresPorEquipo(String stringEquipo) {
-        EntidadEquipo equipo = equipoDAO.findByNombre(stringEquipo);
-        return equipo.getJugadores();
-    }
+        public Set<EntidadJugadores> buscarJugadoresPorEquipo(String stringEquipo) {
+            EntidadEquipo equipo = equipoDAO.findByNombre(stringEquipo);
+            return equipo.getJugadores();
+        }
 
     public EntidadJugadores crearJugadorValidado(EntidadJugadores entidadJugadores) {
         return jugadoresDAO.save(entidadJugadores);
